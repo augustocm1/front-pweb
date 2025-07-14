@@ -1,0 +1,89 @@
+<h1 class="d-flex justify-content-center">Lista de Disciplinas</h1>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="success" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong> {{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="notSuccess" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong> {{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+<div>
+  <div>
+    <div class="row">
+      <div class="col-md-2">
+        <button type="button" class="btn btn-warning" (click)="newTeacher()">
+          <i class="fa fa-plus"></i> Nova
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-condensed table-hover">
+          <thead>
+            <tr>
+              <th class="col-md-2">Nome</th>
+              <th class="col-md-2">Descrição</th>
+              <th class="col-md-2">Professor</th>
+              <th class="col-md-2">Turno</th>
+              <th class="col-md-2"></th>
+              <th class="col-md-2"></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let disciplina of disciplinas">
+            <tr>
+              <th class="col-md-2">{{ disciplina.name }}</th>
+              <th class="col-md-2">{{ disciplina.description }}</th>
+              <th class="col-md-2">{{ disciplina.teacher.name }}</th>
+              <th class="col-md-2">{{ disciplina.status }}</th>
+              <th class="col-md-2">
+                <button class="btn btn-primary" routerLink="/layout/disciplinas-form/{{ disciplina.id }}">
+                  <i class="fa fa-edit"></i> Atualizar
+                </button>
+              </th>
+              <th class="col-md-2">
+                <button class="btn btn-danger" (click)="startDelete(disciplina)" data-bs-toggle="modal"
+                  data-bs-target="#modalDelecao">
+                  <i class="fa fa-trash"></i> Excluir
+                </button>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalDelecao" class="modal fade" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Excluir Disciplina</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            <strong>Tem certeza de que deseja <span class="text-primary">excluir</span> esta disciplina ?</strong>
+          </p>
+          <p>Todas as informações associadas a esta agência serão excluídas permanentemente.
+            <span class="text-danger">Esta operação não pode ser desfeita.</span>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"
+            (click)="cancelDelete()">Cancelar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="finishDelete()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

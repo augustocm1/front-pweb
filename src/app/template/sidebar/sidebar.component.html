@@ -1,0 +1,49 @@
+<div id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+      <div class="nav">
+        <div class="sb-sidenav-menu-heading">Home</div>
+        <a [routerLink]="['/layout/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+          class="nav-link">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          Dashboard
+        </a>
+        <div class="sb-sidenav-menu-heading">Main</div>
+        <a class="nav-link collapsed" routerLink="/layout/professores-list" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}" data-toggle="collapse" data-target="#collapseLayouts"
+          aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-columns"></i>
+          </div>
+          Professores
+
+        </a>
+        <a class="nav-link collapsed" routerLink="/layout/disciplinas-list" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        data-toggle=" collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          Disciplinas
+
+        </a>
+
+        <div class="sb-sidenav-menu-heading">Outras opções</div>
+        <a class="nav-link" routerLink="/auth">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-chart-area"></i>
+          </div>
+          Sair
+        </a>
+
+
+      </div>
+    </div>
+    <div class="sb-sidenav-footer">
+      <div class="small">Logado com:</div>
+       {{ user }}
+    </div>
+  </nav>
+</div>
